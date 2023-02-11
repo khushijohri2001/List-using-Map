@@ -1,27 +1,50 @@
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const JSArray = [
+    {
+      item: "Sandwich",
+      ingredients: [
+        "bread",
+        "milk",
+        "tomato",
+        "butter",
+        "onion",
+        "cucumber",
+        "salt",
+      ],
+    },
+    {
+      item: "Cake",
+      ingredients: [
+        "flour",
+        "sugar",
+        "chocolate",
+        "oil",
+        "salt",
+        "baking powder",
+      ],
+    },
+    {
+      item: "Milkshake",
+      ingredients: ["milk", "ice", "sugar", "icecream", "strawberry"],
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      <h1>List of Items</h1>
+      <div>
+        <ul>
+          {JSArray.map((items) => {
+            return <li style={{listStyleType: 'none'}}>
+              <h2>{items.item}</h2>
+              <p>{items.ingredients.map(ingredient => <li style={{listStyleType: 'square'}}>{ingredient}</li>)}</p>
+            </li>;
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
